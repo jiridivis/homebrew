@@ -2,8 +2,8 @@ require 'formula'
 
 class Mosquitto < Formula
   homepage 'http://mosquitto.org/'
-  url 'http://mosquitto.org/files/source/mosquitto-1.0.5.tar.gz'
-  sha1 'fecf0e9a55dc31e3abf4be0b7a7a79b6b8172fd6'
+  url 'http://mosquitto.org/files/source/mosquitto-1.1.2.tar.gz'
+  sha1 '2cc4d5c21adab5b7f577caa443a0890c87ad4ae3'
 
   depends_on 'pkg-config' => :build
   depends_on 'cmake' => :build
