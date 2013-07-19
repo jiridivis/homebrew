@@ -7,7 +7,7 @@ require 'extend/ARGV'
 def bottle_filename f, bottle_revision=nil
   name = f.name.downcase
   version = f.stable.version
-  bottle_revision ||= f.bottle.revision.to_i
+  bottle_revision ||= f.bottle.revision.to_i if f.bottle
   "#{name}-#{version}#{bottle_native_suffix(bottle_revision)}"
 end
 
@@ -88,4 +88,11 @@ def bottle_tag
   else
     Hardware::CPU.type == :ppc ? Hardware::CPU.family : MacOS.cat
   end
+end
+
+def bottle_filename_formula_name filename
+  version = Version.parse(filename).to_s
+  path = Pathname.new filename
+  basename = path.basename.to_s
+  basename.rpartition("-#{version}").first
 end
